@@ -22,13 +22,21 @@
           <li><strong>生年月日:</strong> 2006年9月11日</li>
         </ul>
       </section>
-      </section>
       <section class="hobbies">
         <h2>趣味</h2>
-        <ul>
-          <li>ゲーム（特にRPGやアクションゲームが好きです）</li>
-          <li>音楽鑑賞（ジャンルを問わず色々な曲を聴きます）</li>
-          <li>散歩（知らない道を歩いて新しい発見をするのが楽しみです）</li>
+        <ul class="hobby-list">
+          <li class="hobby-item" data-hobby="game">
+            <span class="hobby-title">🎮 ゲーム</span>
+            <span class="hobby-detail">特にRPGやアクションゲームが好きです</span>
+          </li>
+          <li class="hobby-item" data-hobby="music">
+            <span class="hobby-title">🎵 音楽鑑賞</span>
+            <span class="hobby-detail">ジャンルを問わず色々な曲を聴きます</span>
+          </li>
+          <li class="hobby-item" data-hobby="walk">
+            <span class="hobby-title">🚶‍♀️ 散歩</span>
+            <span class="hobby-detail">知らない道を歩いて新しい発見をするのが楽しみです</span>
+          </li>
         </ul>
       </section>
       <section class="school">
@@ -37,9 +45,17 @@
       </section>
     </main>
   </div>
-</body>
-</html>
+  
+  <!-- 波のアニメーション要素 -->
+  <div class="ocean">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+  </div>
+
 <script>
+    // 波のようなテキストアニメーション
     const wavyText = document.querySelector('.wavy-text');
     if (wavyText) {
       wavyText.innerHTML = wavyText.textContent
@@ -51,6 +67,77 @@
         })
         .join('');
     }
-  </script>
+
+    // 趣味の選択機能
+    const hobbyItems = document.querySelectorAll('.hobby-item');
+    let selectedHobby = null;
+
+    hobbyItems.forEach(item => {
+        // クリックイベント
+        item.addEventListener('click', function() {
+            const hobbyType = this.dataset.hobby;
+            
+            // ゲーム項目がクリックされた場合は別ページに遷移
+            if (hobbyType === 'game') {
+                window.location.href = 'game.html';
+                return;
+            }
+            
+            // 既に選択されている項目から選択を解除
+            if (selectedHobby) {
+                selectedHobby.classList.remove('selected');
+            }
+            
+            // 新しい項目を選択
+            if (selectedHobby !== this) {
+                this.classList.add('selected');
+                selectedHobby = this;
+                
+                // 選択した趣味に応じてメッセージを表示
+                showHobbyMessage(hobbyType);
+            } else {
+                selectedHobby = null;
+            }
+        });
+
+        // ホバーエフェクト
+        item.addEventListener('mouseenter', function() {
+            this.classList.add('hovered');
+        });
+
+        item.addEventListener('mouseleave', function() {
+            this.classList.remove('hovered');
+        });
+    });
+
+    // 趣味選択時のメッセージ表示
+    function showHobbyMessage(hobbyType) {
+        const messages = {
+            music: '音楽は心を豊かにしますね！好きなアーティストはいますか？🎵',
+            walk: '散歩は健康にも良く、新しい発見もありますね！🚶‍♀️'
+        };
+        
+        // 既存のメッセージを削除
+        const existingMessage = document.querySelector('.hobby-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // 新しいメッセージを表示
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'hobby-message';
+        messageDiv.textContent = messages[hobbyType];
+        
+        const hobbiesSection = document.querySelector('.hobbies');
+        hobbiesSection.appendChild(messageDiv);
+        
+        // 3秒後にメッセージを削除
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.remove();
+            }
+        }, 3000);
+    }
+</script>
 </body>
 </html>
