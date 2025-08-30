@@ -19,6 +19,22 @@
   update();
 })();
 
+// スクロール深度で暗さ(深海感)を増す
+(function(){
+  const root = document.documentElement;
+  const updateDepth = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if(max <= 0) return;
+    const ratio = Math.min(1, Math.max(0, window.scrollY / max));
+  // 下端だけ暗く: 最大 0.55 (集中) で上部はほぼ影響なし
+  const opacity = (0.55 * Math.pow(ratio, 1.25)).toFixed(3);
+    root.style.setProperty('--depth-opacity', opacity);
+  };
+  window.addEventListener('scroll', updateDepth, {passive:true});
+  window.addEventListener('resize', updateDepth);
+  updateDepth();
+})();
+
 // テーマトグル (ライト/ディープブルー)
 (function(){
   const btn = document.createElement('button');
