@@ -69,6 +69,46 @@
         </ul>
       </section>
       
+      <section class="persona-section" id="persona-recommend">
+        <h2>おすすめゲーム紹介：ペルソナシリーズ</h2>
+        <p class="persona-intro">スタイリッシュなUIと心に残る物語、仲間との絆システム、ターン制と属性を活かした戦略的バトルが特徴の JRPG シリーズです。特に 3 / 4 / 5 はそれぞれ異なるテーマと雰囲気を持っています。</p>
+        <div class="persona-grid">
+          <div class="persona-card persona3" data-persona="p3">
+            <div class="persona-badge">P3</div>
+            <h3>ペルソナ3</h3>
+            <p class="short">“死”と向き合い絆を築くダークで重厚な物語。タルタロス攻略と日常の両立。</p>
+            <ul class="features">
+              <li>テーマ: 死と受容</li>
+              <li>学園×RPGの原点強化</li>
+              <li>月齢・深夜“影時間”の不穏さ</li>
+            </ul>
+          </div>
+          <div class="persona-card persona4" data-persona="p4">
+            <div class="persona-badge">P4</div>
+            <h3>ペルソナ4</h3>
+            <p class="short">田舎町×連続怪事件。友情と“自分の本心”を受け入れる爽やかな青春ミステリー。</p>
+            <ul class="features">
+              <li>テーマ: 真実と自己受容</li>
+              <li>テレビ世界のダンジョン多様性</li>
+              <li>仲間イベントが濃い</li>
+            </ul>
+          </div>
+          <div class="persona-card persona5" data-persona="p5">
+            <div class="persona-badge">P5</div>
+            <h3>ペルソナ5</h3>
+            <p class="short">怪盗となり“歪んだ大人の心”を盗むスタイリッシュで痛快なカタルシス。</p>
+            <ul class="features">
+              <li>テーマ: 抑圧からの解放</li>
+              <li>美しい統一UIとジャズ調BGM</li>
+              <li>潜入×ターンバトル融合</li>
+            </ul>
+          </div>
+        </div>
+        <div class="persona-detail" id="persona-detail" aria-live="polite">
+          <h4>カードをクリックすると詳しい紹介が表示されます</h4>
+        </div>
+      </section>
+      
       <section class="future-goals">
         <h2>将来の目標</h2>
         <p>IT業界で働く中で、ゲーム開発にも興味があります。ユーザーに楽しい体験を提供できるようなゲームやアプリケーションの開発に携わりたいと考えています。</p>
@@ -83,5 +123,37 @@
     <div class="wave wave3"></div>
     <div class="wave wave4"></div>
   </div>
+  <script>
+    // ペルソナカード詳細表示
+    const personaCards = document.querySelectorAll('.persona-card');
+    const detailBox = document.getElementById('persona-detail');
+    const detailData = {
+      p3: {
+        title: 'ペルソナ3 詳細',
+        text: '影時間とタルタロス、仲間の死生観に焦点を当てた群像劇。BGMはジャズとラップの独特な融合。HPとSPを弾に変える「ペルソナ召喚（エヴォーカー）」演出が印象的。'
+      },
+      p4: {
+        title: 'ペルソナ4 詳細',
+        text: '霧とテレビ世界の謎を追う日常＋非日常。明るさの裏にある“受け入れがたい自分”との対峙。色彩はイエロー基調で覚えやすく、推理的要素とコミュが調和。'
+      },
+      p5: {
+        title: 'ペルソナ5 詳細',
+        text: 'スタイリッシュな赤×黒。怪盗団として社会的抑圧へ反逆。スピード感あるUI、バトンパスとテクニカルでテンポ抜群。日常/潜入/戦闘のサイクルが滑らか。'
+      }
+    };
+    personaCards.forEach(c => {
+      c.addEventListener('click', () => {
+        personaCards.forEach(o => o.classList.remove('active'));
+        c.classList.add('active');
+        const key = c.dataset.persona;
+        const d = detailData[key];
+        detailBox.innerHTML = `<h4>${d.title}</h4><p>${d.text}</p>`;
+      });
+      c.addEventListener('keypress', (e) => { if(e.key === 'Enter') c.click(); });
+      c.setAttribute('tabindex','0');
+      c.setAttribute('role','button');
+      c.setAttribute('aria-pressed','false');
+    });
+  </script>
 </body>
 </html>

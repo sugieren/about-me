@@ -83,6 +83,18 @@
                 return;
             }
             
+            // 音楽項目がクリックされた場合は音楽ページに遷移
+            if (hobbyType === 'music') {
+                window.location.href = 'music.html';
+                return;
+            }
+            
+            // 散歩項目がクリックされた場合は散歩ページに遷移
+            if (hobbyType === 'walk') {
+                window.location.href = 'walk.html';
+                return;
+            }
+            
             // 既に選択されている項目から選択を解除
             if (selectedHobby) {
                 selectedHobby.classList.remove('selected');
@@ -139,5 +151,6 @@
         }, 3000);
     }
 </script>
+<script src="js/main.js"></script>
 </body>
 </html>

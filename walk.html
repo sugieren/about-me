@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>散歩 - 杉江麗の趣味</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="content">
+    <nav class="home-nav"><a href="index.html" class="home-button">🏠 自己紹介へ戻る</a></nav>
+    <header>
+      <h1>🚶‍♀️ 散歩</h1>
+    </header>
+    <main>
+      <section class="walk-intro">
+        <h2>散歩の魅力</h2>
+        <p>散歩は私にとって、日常のストレスを解消し、新しい発見をもたらしてくれる大切な時間です。知らない道を歩くことで、普段気づかない景色や場所に出会えます。</p>
+      </section>
+
+      <section class="walking-routes">
+        <h2>お気に入りの散歩コース</h2>
+        <div class="route-grid">
+          <div class="route-card nature-route">
+            <div class="route-icon">🌳</div>
+            <h3>自然散策コース</h3>
+            <p>公園や緑道を歩く、自然に囲まれたコース。鳥のさえずりや季節の変化を感じられます。</p>
+          </div>
+          <div class="route-card urban-route">
+            <div class="route-icon">🏙️</div>
+            <h3>街中探索コース</h3>
+            <p>商店街や住宅街を歩き、地域の文化や人々の生活を観察するコース。</p>
+          </div>
+          <div class="route-card river-route">
+            <div class="route-icon">🌊</div>
+            <h3>川沿い散歩コース</h3>
+            <p>川や湖の周りを歩く、水の音に癒されるリラックスコース。</p>
+          </div>
+          <div class="route-card hill-route">
+            <div class="route-icon">⛰️</div>
+            <h3>坂道チャレンジコース</h3>
+            <p>坂道の多いエリアを歩き、運動効果も期待できる少しハードなコース。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seasonal-walks">
+        <h2>季節ごとの散歩の楽しみ</h2>
+        <div class="seasons-grid">
+          <div class="season-card spring">
+            <h3>🌸 春</h3>
+            <p>桜並木や花々が咲く公園を歩き、新緑の美しさを楽しみます。</p>
+          </div>
+          <div class="season-card summer">
+            <h3>☀️ 夏</h3>
+            <p>早朝や夕方の涼しい時間に、緑豊かな場所で自然の涼を感じます。</p>
+          </div>
+          <div class="season-card autumn">
+            <h3>🍂 秋</h3>
+            <p>紅葉した葉っぱを踏みしめながら、色鮮やかな景色を満喫します。</p>
+          </div>
+          <div class="season-card winter">
+            <h3>❄️ 冬</h3>
+            <p>雪化粧した景色や、澄んだ空気の中での散歩は格別です。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="discovery-moments">
+        <h2>散歩中の発見</h2>
+        <ul>
+          <li><strong>隠れた名店:</strong> 路地裏にある素敵なカフェやお店の発見</li>
+          <li><strong>季節の変化:</strong> 同じ道でも季節によって全く違う表情を見せる</li>
+          <li><strong>地域の歴史:</strong> 古い建物や石碑から地域の歴史を知る</li>
+          <li><strong>動植物との出会い:</strong> 野鳥や昆虫、珍しい植物との遭遇</li>
+        </ul>
+      </section>
+
+      <section class="walking-benefits">
+        <h2>散歩がもたらす効果</h2>
+        <p>散歩は身体的な健康だけでなく、精神的なリフレッシュにも大きな効果があります。歩きながら考え事をすることで、アイデアが浮かんだり、問題の解決策が見つかったりすることもあります。また、新しい場所を発見することで、冒険心や好奇心も刺激されます。</p>
+      </section>
+    </main>
+  </div>
+  
+  <!-- 波のアニメーション要素 -->
+  <div class="ocean">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+  </div>
+
+<script>
+    // 散歩ルートカードのインタラクション
+    const routeCards = document.querySelectorAll('.route-card');
+    
+    routeCards.forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            showRouteMessage(this);
+        });
+    });
+
+    function showRouteMessage(card) {
+        const routeName = card.querySelector('h3').textContent;
+        if (card.classList.contains('selected')) {
+            alert(`${routeName}を選択しました！素晴らしいコースですね。`);
+        }
+    }
+
+    // 季節カードのアニメーション
+    const seasonCards = document.querySelectorAll('.season-card');
+    
+    seasonCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+</script>
+</body>
+</html>

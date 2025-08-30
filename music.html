@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>音楽鑑賞 - 杉江麗の趣味</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="content">
+    <nav class="home-nav"><a href="index.html" class="home-button">🏠 自己紹介へ戻る</a></nav>
+    <header>
+      <h1>🎵 音楽鑑賞</h1>
+    </header>
+    <main>
+      <section class="music-intro">
+        <h2>音楽への想い</h2>
+        <p>音楽は私の日常に欠かせない存在です。勉強中や休憩時間、移動中など、いつでも音楽と共に過ごしています。ジャンルを問わず様々な曲を聴くことで、新しい発見や感動を得ています。</p>
+      </section>
+
+      <section class="favorite-genres">
+        <h2>好きなジャンル</h2>
+        <div class="genre-grid">
+          <div class="genre-card" data-genre="jpop">
+            <div class="genre-icon">🎌</div>
+            <h3>J-POP</h3>
+            <p>日本のポップスが大好きです。メロディーが美しく、歌詞も心に響きます。</p>
+          </div>
+          <div class="genre-card" data-genre="anime">
+            <div class="genre-icon">🎭</div>
+            <h3>アニメソング</h3>
+            <p>アニメの世界観を表現した楽曲は、物語と音楽が一体となって素晴らしいです。</p>
+          </div>
+          <div class="genre-card" data-genre="classical">
+            <div class="genre-icon">🎼</div>
+            <h3>クラシック</h3>
+            <p>時代を超えて愛され続ける名曲たち。集中したい時によく聴いています。</p>
+          </div>
+          <div class="genre-card" data-genre="jazz">
+            <div class="genre-icon">🎺</div>
+            <h3>ジャズ</h3>
+            <p>リラックスしたい時や、おしゃれな気分になりたい時にぴったりです。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="listening-habits">
+        <h2>音楽を聴く時間</h2>
+        <ul>
+          <li><strong>朝:</strong> アップテンポな曲で一日をスタート</li>
+          <li><strong>勉強中:</strong> 歌詞のない集中できる音楽</li>
+          <li><strong>移動時:</strong> 好きなアーティストの新曲チェック</li>
+          <li><strong>夜:</strong> ゆったりとしたメロディーでリラックス</li>
+        </ul>
+      </section>
+
+      <section class="music-effects">
+        <h2>音楽がもたらす効果</h2>
+        <p>音楽は私にとって感情を豊かにしてくれる大切な存在です。嬉しい時は一緒に喜び、悲しい時は心を癒してくれます。また、新しい音楽に出会うことで、これまで知らなかった世界や文化に触れることができ、視野が広がります。</p>
+      </section>
+    </main>
+  </div>
+  
+  <!-- 波のアニメーション要素 -->
+  <div class="ocean">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+  </div>
+
+<script>
+    // ジャンルカードのインタラクション
+    const genreCards = document.querySelectorAll('.genre-card');
+    
+    genreCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const genre = this.dataset.genre;
+            showGenreDetails(genre);
+        });
+    });
+
+    function showGenreDetails(genre) {
+        const details = {
+            jpop: 'J-POPは日本の音楽文化の象徴ですね！好きなアーティストはいますか？',
+            anime: 'アニメソングは物語の世界に引き込まれますね！どんなアニメの曲が好きですか？',
+            classical: 'クラシック音楽は心を落ち着かせてくれますね。どの作曲家がお気に入りですか？',
+            jazz: 'ジャズの即興性と自由さは魅力的ですね！どんなジャズアーティストがお好みですか？'
+        };
+        
+        alert(details[genre] || 'この音楽ジャンルについて詳しく聞かせてください！');
+    }
+</script>
+</body>
+</html>
