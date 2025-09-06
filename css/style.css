@@ -1,3 +1,31 @@
+/* --- 深海プランクトン粒子 --- */
+.plankton-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, #b6faff 0%, #5fffd7 60%, transparent 100%);
+  box-shadow: 0 0 12px 4px #5fffd7, 0 0 32px 8px #b6faff;
+  opacity: 0.7;
+  animation: planktonFloat 8s linear forwards;
+}
+
+@keyframes planktonFloat {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.7;
+    filter: blur(0px);
+  }
+  70% {
+    opacity: 1;
+    filter: blur(0.5px);
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.7) rotate(30deg);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
 /* --- 全体設定 --- */
 * {
   margin: 0;
@@ -17,24 +45,6 @@ body {
 }
 
 /* スクロールが進むほど暗く（深海演出） */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999; /* コンテンツ上に被せて暗くする */
-  background: linear-gradient(
-    to bottom,
-    rgba(0,15,40,0) 0%,
-    rgba(0,12,38,0) 70%,
-    rgba(0,8,32,0) 82%,
-    rgba(0,6,28,var(--depth-opacity,0)) 90%,
-    rgba(0,3,22,var(--depth-opacity,0)) 96%,
-    rgba(0,0,18,var(--depth-opacity,0)) 100%
-  );
-  mix-blend-mode: multiply;
-  transition: background 0.25s ease;
-}
 
 /* テーマ変数 (JS で切替) */
 :root {
@@ -141,8 +151,9 @@ ul li {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .wave {
@@ -157,31 +168,31 @@ ul li {
 
 .wave1 {
   animation: wave1 8s ease-in-out infinite;
-  opacity: 0.7;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+  opacity: 0.45;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
   height: 80%;
 }
 
 .wave2 {
   animation: wave2 12s ease-in-out infinite reverse;
-  opacity: 0.5;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  opacity: 0.32;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.13));
   transform: translateX(-25%);
   height: 90%;
 }
 
 .wave3 {
   animation: wave3 15s ease-in-out infinite;
-  opacity: 0.4;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  opacity: 0.22;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.07));
   transform: translateX(-50%);
   height: 95%;
 }
 
 .wave4 {
   animation: wave4 20s ease-in-out infinite reverse;
-  opacity: 0.3;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  opacity: 0.13;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
   transform: translateX(-75%);
   height: 100%;
 }

@@ -1,3 +1,25 @@
+(function planktonParticles(){
+  function spawnPlankton() {
+    const p = document.createElement('span');
+    p.className = 'plankton-particle';
+    // ランダムなサイズ・位置・遅延
+    const size = Math.random() * 8 + 6;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = (Math.random() * 96 + 2) + 'vw';
+    p.style.bottom = (Math.random() * 12 - 4) + 'vh';
+    p.style.opacity = (Math.random() * 0.4 + 0.5).toFixed(2);
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
+    p.style.filter = `blur(${Math.random()*1.5}px)`;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 12000);
+  }
+  setInterval(()=>{
+    if(document.hidden) return;
+    // 1～2個/秒程度
+    if(Math.random()<0.7) spawnPlankton();
+  }, 700);
+})();
 // 追加インタラクティブ要素: スクロール進捗バー, テーマトグル, 小さな泡エフェクト, セクション内の見出しアニメ
 
 // スクロール進捗バー生成
@@ -19,21 +41,6 @@
   update();
 })();
 
-// スクロール深度で暗さ(深海感)を増す
-(function(){
-  const root = document.documentElement;
-  const updateDepth = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    if(max <= 0) return;
-    const ratio = Math.min(1, Math.max(0, window.scrollY / max));
-  // 下端だけ暗く: 最大 0.55 (集中) で上部はほぼ影響なし
-  const opacity = (0.55 * Math.pow(ratio, 1.25)).toFixed(3);
-    root.style.setProperty('--depth-opacity', opacity);
-  };
-  window.addEventListener('scroll', updateDepth, {passive:true});
-  window.addEventListener('resize', updateDepth);
-  updateDepth();
-})();
 
 // テーマトグル (ライト/ディープブルー)
 (function(){
